@@ -37,7 +37,7 @@ then
     echo "export GOPATH=$GOPATH" >> ~/.bashrc
     echo "======== Updated .profile with GOROOT/GOPATH/PATH===="
 
-    echo "export GOCACHE=off" >> ~/.bashrc
+    echo "export GOCACHE=" >> ~/.bashrc
 
 
 else

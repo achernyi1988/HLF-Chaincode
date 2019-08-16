@@ -23,7 +23,7 @@ fi
 
 echo "+++Building the GoLang chaincode"
 #go build -o $CC_PATH
-export GOCACHE=off
+export GOCACHE=""
 
 export CORE_CHAINCODE_ID_NAME=$CC_NAME:$CC_VERSION
 

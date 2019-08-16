@@ -79,6 +79,7 @@ while getopts "n:p:v:l:C:c:q:i:L:S:R:P:h" OPTION; do
         ;;
     i)
         export CC_INVOKE_ARGS=${OPTARG}
+        echo i $CC_INVOKE_ARGS
         ;;
     L)
         # Controls chaincode Logging Level - used in Dev mode

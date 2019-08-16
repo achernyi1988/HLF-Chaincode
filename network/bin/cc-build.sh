@@ -14,7 +14,7 @@ echo "$GOPATH/src/$CC_PATH"
 
 echo "====> Building the GoLang chaincode...please wait"
 #go build -o $CC_PATH
-export GOCACHE=off
+export GOCACHE=""
 go build  $CC_PATH
 
 RESULT=$?

@@ -19,7 +19,7 @@ then
     usage
 elif  [ "$OPERATION" == "install" ]
 then
-    echo "==>Installing chaincode" path = $CC_PATH
+    echo "==>Installing chaincode" CC_PATH = $CC_PATH CC_NAME = $CC_NAME
     peer chaincode install -l "$CC_LANGUAGE" -n "$CC_NAME" -p "$CC_PATH" -v "$CC_VERSION"
 elif  [ "$OPERATION" == "instantiate" ] 
 then
@@ -40,7 +40,7 @@ then
     fi
 
     echo $MSG
-
+  echo "==>instantiate chaincode" CC_PATH = $CC_PATH CC_NAME = $CC_NAME
     peer chaincode instantiate -C "$CC_CHANNEL_ID" -n "$CC_NAME" -v "$CC_VERSION" -c "$CC_CONSTRUCTOR"   -o "$ORDERER_ADDRESS" -l "$CC_LANGUAGE"  "$PDC_FLAG" "$GOPATH/src/$CC_PATH/$CC_PRIVATE_DATA_JSON" "$EP_FLAG" "$CC_ENDORSEMENT_POLICY"
 # elif  [ "$OPERATION" == "instantiate-priv" ] 
 # then
@@ -65,6 +65,7 @@ elif  [ "$OPERATION" == "invoke" ]; then
         # Override the Invoke parameter
         CC_INVOKE_ARGS=$2
     fi
+    echo CC_INVOKE_ARGS = $CC_INVOKE_ARGS
     peer chaincode invoke -o "$ORDERER_ADDRESS" -C "$CC_CHANNEL_ID" -n "$CC_NAME"  -c "$CC_INVOKE_ARGS"
 elif  [ "$OPERATION" == "list" ]; then
     echo "==>Listing Installed chaincode"
@@ -91,7 +92,7 @@ elif  [ "$OPERATION" == "upgrade" ]; then
 
     echo $MSG
 
-
+  echo "==>instantiate chaincode" CC_PATH = $CC_PATH CC_NAME = $CC_NAME CC_VERSION = $CC_VERSION
     # Requires the manual install of new version
     # Use the constructor args
     peer chaincode upgrade -n "$CC_NAME" -v "$CC_VERSION" -C "$CC_CHANNEL_ID"  -c "$CC_CONSTRUCTOR"  "$PDC_FLAG" "$GOPATH/src/$CC_PATH/$CC_PRIVATE_DATA_JSON" "$EP_FLAG" "$CC_ENDORSEMENT_POLICY"
